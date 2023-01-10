@@ -62,3 +62,8 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# Data
+cn_data/
+cn_data_rvol/
+cn_data_daily_bar/
