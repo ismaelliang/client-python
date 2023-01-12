@@ -1,0 +1,67 @@
+version: 3.0
+1d:
+  chartSettings:
+    infer_from_file: false
+  chart:
+    type: Candles
+    indexBased: true
+    dataQuery:
+      type: parquet
+      source: __file__
+  onchart:
+    - name: demo_ema 
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors]
+      setting_table:
+        - [ema27, "#ff1f6d"]
+        - [ema50, "#dc00f5"]
+        - [ema200, "#5e00f5"]
+        - [std50, "#5C3317"]
+    - name: sig
+      type: VertLines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols]
+      setting_table:
+        - [sig_buy]
+        - [sig_sell]
+    - name: diff_sig
+      type: Trades
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __diff_file__
+      setting_schema: [cols]
+      setting_table:
+        - [sig_buy]
+        - [sig_sell]        
+  offchart:
+    - name: signals
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors, scale]
+      setting_table:
+        - [cond1, "#ff1f6d", 1.0]
+        - [cond2, "#dc00f5", 0.8]
+        - [cond3, "#5e00f5", 0.6]
+        # - [cond4, "#00c2cc", 0.4]
+        - [condout_1, "#00c2cc", -0.8]
+        - [condout_2, "#8db531", -1.0]
+    - name: score
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors]
+      setting_table:
+        - [score, "#ff00ff"]

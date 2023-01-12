@@ -1,0 +1,20 @@
+version: 3.0
+1d:
+  chartSettings:
+    infer_from_file: false
+  chart:
+    type: Candles
+    indexBased: true
+    dataQuery:
+      type: parquet
+      source: __file__
+  offchart:
+    - name: rvol_30
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors, scale]
+      setting_table:
+        - [rvol_30, "#ff1f6d", 1.0]

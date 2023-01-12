@@ -1,0 +1,10 @@
+version: 3.0
+1m:
+  chartSettings:
+    infer_from_file: false
+  chart:
+    type: Candles
+    indexBased: true
+    dataQuery:
+      type: parquet
+      source: __file__

@@ -1,0 +1,29 @@
+version: 3.0
+1d:
+  chartSettings:
+    infer_from_file: false
+  chart:
+    type: Candles
+    indexBased: true
+    dataQuery:
+      type: parquet
+      source: __file__
+  offchart:
+    - name: pivot_high_price
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors, scale]
+      setting_table:
+        - [pivot_high_price, "#ff1f6d", 1.0]
+    - name: pivot_low_price
+      type: Splines
+      indexSrc: data
+      dataQuery:
+        type: parquet
+        source: __file__
+      setting_schema: [cols, colors, scale]
+      setting_table:
+        - [pivot_low_price, "#ff1f6d", 1.0]
