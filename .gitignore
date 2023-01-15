@@ -67,3 +67,6 @@ target/
 cn_data/
 cn_data_rvol/
 cn_data_daily_bar/
+cn_data_weekly_bar/
+cn_data_range_vol/
+cn_data_minute/
